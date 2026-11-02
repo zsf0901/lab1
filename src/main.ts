@@ -1,5 +1,5 @@
 import { createInterface } from 'node:readline';
-import { Editor } from './Editor.ts';
+import { Editor } from './cli/Editor.ts';
 const editor = new Editor();
 const terminal = createInterface({input:process.stdin,output:process.stdout,terminal:Boolean(process.stdin.isTTY),prompt:'svg> '});
 console.log("svg-editor 0.1 — type 'help' for commands");

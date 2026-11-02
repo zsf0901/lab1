@@ -1,5 +1,5 @@
 import { EditCommand } from './EditCommand.ts';
-import { Document } from './Document.ts';
+import { Document } from '../domain/Document.ts';
 export class History {
   private past: EditCommand[] = [];
   private future: EditCommand[] = [];

@@ -3,7 +3,9 @@ import { Shape } from './Shape.ts';
 import { ShapeFactory } from './ShapeFactory.ts';
 export class Document {
   readonly root = new Group('__root__');
-  constructor(public width = 800, public height = 600) {}
+  width: number;
+  height: number;
+  constructor(width = 800, height = 600) { this.width=width; this.height=height; }
   all(parent: Shape = this.root): Shape[] { return parent.children.flatMap(child => [child,...this.all(child)]); }
   find(id: string): Shape {
     const shape = this.all().find(shape => shape.id === id);

@@ -1,8 +1,9 @@
 import { XMLParser, XMLValidator } from 'fast-xml-parser';
-import { Document } from './Document.ts';
-import { Shape } from './Shape.ts';
-import { Group } from './Group.ts';
-import { ShapeFactory } from './ShapeFactory.ts';
+import { Document } from '../domain/Document.ts';
+import { Shape } from '../domain/Shape.ts';
+import { Group } from '../domain/Group.ts';
+import { ShapeFactory } from '../domain/ShapeFactory.ts';
+import { Text } from '../domain/Text.ts';
 export class SvgCodec {
   private escape(value: string): string { return value.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&apos;'); }
   encode(document: Document): string {
@@ -39,7 +40,7 @@ export class SvgCodec {
         if (key === 'id' || key === 'data-kind' || key.startsWith('xmlns')) continue;
         shape.set(key,String(value));
       }
-      if (tag === 'text') shape.set('text',item[tag].filter((entry:any) => '#text' in entry).map((entry:any) => entry['#text']).join(''));
+      if (shape instanceof Text) shape.set('text',item[tag].filter((entry:any) => '#text' in entry).map((entry:any) => entry['#text']).join(''));
       parent.insert(shape);
       if (shape instanceof Group) load(item[tag],shape);
     }};

@@ -1,6 +1,6 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { SvgCodec } from './SvgCodec.ts';
-import { Document } from './Document.ts';
+import { Document } from '../domain/Document.ts';
 export class FileStore {
   private readonly codec = new SvgCodec();
   read(path: string): ReturnType<SvgCodec['decode']> {

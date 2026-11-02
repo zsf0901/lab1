@@ -4,7 +4,9 @@ export abstract class Shape {
   abstract readonly geometry: readonly string[];
   abstract readonly horizontal: readonly string[];
   abstract readonly vertical: readonly string[];
-  constructor(readonly id: string) {
+  readonly id: string;
+  constructor(id: string) {
+    this.id = id;
     if (!id || /\s/.test(id)) throw new Error('invalid id');
   }
   get attrs(): Readonly<Record<string, string>> { return { ...this.attributes }; }

@@ -1,9 +1,9 @@
-import { Document } from './Document.ts';
-import { Group } from './Group.ts';
-import { ShapeFactory } from './ShapeFactory.ts';
-import { History } from './History.ts';
-import { EditCommand } from './EditCommand.ts';
-import { FileStore } from './FileStore.ts';
+import { Document } from '../domain/Document.ts';
+import { Group } from '../domain/Group.ts';
+import { ShapeFactory } from '../domain/ShapeFactory.ts';
+import { History } from '../commands/History.ts';
+import { EditCommand } from '../commands/EditCommand.ts';
+import { FileStore } from '../io/FileStore.ts';
 export class Editor {
   private document?: Document;
   private path?: string;

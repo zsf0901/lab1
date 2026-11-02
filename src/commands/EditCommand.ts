@@ -1,8 +1,9 @@
-import { Document } from './Document.ts';
+import { Document } from '../domain/Document.ts';
 export class EditCommand {
   private before?: Document;
   private after?: Document;
-  constructor(private readonly action: (document: Document) => string) {}
+  private readonly action: (document: Document) => string;
+  constructor(action: (document: Document) => string) { this.action = action; }
   execute(document: Document): {document: Document; message: string} {
     const next = document.clone();
     const message = this.action(next);
